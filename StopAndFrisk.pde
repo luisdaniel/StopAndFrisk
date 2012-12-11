@@ -20,11 +20,17 @@ void setup() {
   Collections.sort(binList);
   Collections.reverse(binList);
   sortBySuspect();
+  drawPermanentFeatures();
 }
 
 
 
 void draw() {
+
+
+
+
+/*
   background(0);
   tscrollOffset= -map(mouseX, 0, width, fullWidth - width, 0);
 
@@ -35,6 +41,8 @@ void draw() {
     p.update();
     p.drawPanel();
   }
+  
+  */
 }
 
 
@@ -74,4 +82,22 @@ void sortBySuspect() {
   }
   fullWidth = x;
 }
+
+
+
+
+
+void drawPermanentFeatures() {
+  background(255);
+  strokeWeight(9);
+  stroke(0);
+  line(0, height/2, width, height/2);
+  line(width/3, 0, width/3, height);
+  line(2*width/3, 0, 2*width/3, height);
+}
+
+
+
+
+
 
