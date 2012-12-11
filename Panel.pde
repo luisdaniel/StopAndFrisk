@@ -16,11 +16,21 @@ class Panel {
   float alpha;
   int numStops;
   String suspect;
+  PVector position = new PVector();
+  PVector targetPosition = new PVector();
 
   void drawPanel() {
+    pushMatrix(); 
+    {
+      translate(position.x, position.y);
+      text(suspect, 0, 0);
+    } 
+    popMatrix();
   }
 
-
+  void update() {
+    position.lerp(targetPosition, .1);
+  }
 
   void fromCSV(String[] input) {
     race = int(input[5]);
@@ -49,7 +59,7 @@ class Panel {
     }
     summonsOffense = input[24];
     arrestOffense = input[22];
-    suspect = input[96];
+    suspect = input[93];
   }
 }
 
