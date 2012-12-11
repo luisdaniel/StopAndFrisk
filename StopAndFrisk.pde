@@ -20,11 +20,14 @@ void setup() {
   Collections.sort(binList);
   Collections.reverse(binList);
   sortBySuspect();
+
+  background(255);
+  PanelBin bin = binList.get(0);
+  for ( Panel p: bin.panelList) {
+    p.loadPanel();
+  }
+  
   drawPermanentFeatures();
-  
-  for(Panel p: panelList
-  
-  
 }
 
 
@@ -34,19 +37,17 @@ void draw() {
 
 
 
-/*
-  background(0);
-  tscrollOffset= -map(mouseX, 0, width, fullWidth - width, 0);
-
-  //easing
-  scrollOffset = lerp(scrollOffset, tscrollOffset, .1);
-  translate(scrollOffset, 0);
-  for ( Panel p: panelList) {
-    p.update();
-    p.drawPanel();
-  }
-  
-  */
+//
+//  //background(0);
+//  tscrollOffset= -map(mouseX, 0, width, fullWidth - width, 0);
+//
+//  //easing
+//  scrollOffset = lerp(scrollOffset, tscrollOffset, .1);
+//  translate(scrollOffset, 0);
+//  for ( Panel p: panelList) {
+//    p.update();
+//    p.drawPanel();
+//  }
 }
 
 
@@ -69,23 +70,48 @@ void loadPanels() {
       binList.add(bin);
     }
   }
-  
 }
 
-
+// void countChemicals() {
+// for (int i = 0; i < binList.size(); i++) { //list of a list
+//   ChemicalBin bin = binList.get(i);    
+//   
+//   for (int j = 0; j < bin.chemicalList.size(); j++) { //list of chemicals
+//     
+//     ChemicalObject chem = bin.chemicalList.get(j);
+//     if(chem.isMetal == 0) {
+//       fill(255,0,0);
+//     } else {
+//       fill(0, 255, 0);
+//     }
+//   ellipse (i*50, height/2, bin.chemicalList.size()/5,bin.chemicalList.size()/5); 
+//   println ("size: " + bin.chemicalList.size()); 
+//   }
+// }
+//}
 void sortBySuspect() {
-  float x = 0;
+  //  float x = 0;
+  //  for (int i = 0; i < binList.size(); i++) {
+  //    PanelBin bin = binList.get(i);
+  //    //float x = i * 40;
+  //    for (int j = 0 ; j < bin.panelList.size(); j++) {
+  //      Panel p = bin.panelList.get(j);
+  //      float y = height/2-j *10;
+  //      p.targetPosition = new PVector(x, y);
+  //    }
+  //    x+= textWidth(bin.suspect)+2;
+  //  }
+  //  fullWidth = x;
+
+  ///size
   for (int i = 0; i < binList.size(); i++) {
     PanelBin bin = binList.get(i);
-    //float x = i * 40;
     for (int j = 0 ; j < bin.panelList.size(); j++) {
       Panel p = bin.panelList.get(j);
-      float y = height/2-j *10;
-      p.targetPosition = new PVector(x, y);
+      p.numStops = bin.panelList.size();
+      //println(p.numStops);
     }
-    x+= textWidth(bin.suspect)+2;
   }
-  fullWidth = x;
 }
 
 
@@ -93,14 +119,12 @@ void sortBySuspect() {
 
 
 void drawPermanentFeatures() {
-  background(255);
   strokeWeight(9);
   stroke(0);
   line(0, height/2, width, height/2);
   line(width/3, 0, width/3, height);
   line(2*width/3, 0, 2*width/3, height);
 }
-
 
 
 

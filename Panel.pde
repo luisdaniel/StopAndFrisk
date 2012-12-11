@@ -27,7 +27,8 @@ class Panel {
     pushMatrix(); 
     {
       translate(position.x, position.y);
-      text(suspect, 0, 0);
+      //text(suspect, 0, 0);
+      text(numStops, 0, 0);
     } 
     popMatrix();
   }
@@ -69,12 +70,18 @@ class Panel {
 
   void loadPanel() {
     //PANEL 1
-    p1 = loadImage("panel1-"+race+".jpg");
+    String fileName = "panel1-"+race+".jpg";
+    tint(255, 255/numStops);
+    p1 = loadImage(fileName);
     image(p1, 0, 0);
     //PANELL 2
-
+    fileName = "panel2-"+race+"-"+uniform+".jpg";
+    p2 = loadImage(fileName);
+    image(p2, width/3, 0);
     //PANEL 3
-
+    fileName = "panel3-"+race+"-"+uniform+".jpg";
+    p3 = loadImage(fileName);
+    image(p3, width/3, 0);
     //PANEL 4
 
     //PANEL 5
