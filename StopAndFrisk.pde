@@ -21,6 +21,10 @@ void setup() {
   Collections.reverse(binList);
   sortBySuspect();
   drawPermanentFeatures();
+  
+  for(Panel p: panelList
+  
+  
 }
 
 
@@ -65,6 +69,7 @@ void loadPanels() {
       binList.add(bin);
     }
   }
+  
 }
 
 

@@ -19,6 +19,10 @@ class Panel {
   PVector position = new PVector();
   PVector targetPosition = new PVector();
 
+  PImage p1 = new PImage();
+  PImage p2, p3, p4, p5, p6;
+
+
   void drawPanel() {
     pushMatrix(); 
     {
@@ -60,6 +64,22 @@ class Panel {
     summonsOffense = input[24];
     arrestOffense = input[22];
     suspect = input[93];
+  }
+
+
+  void loadPanel() {
+    //PANEL 1
+    p1 = loadImage("panel1-"+race+".jpg");
+    image(p1, 0, 0);
+    //PANELL 2
+
+    //PANEL 3
+
+    //PANEL 4
+
+    //PANEL 5
+
+    //PANEL 6
   }
 }
 
