@@ -12,7 +12,7 @@ PFont labelFont;
 
 void setup() {
   size(1200, 754);
-  smooth(4);
+  //smooth(4);
   labelFont = createFont("Helvetica", 24);
   textFont(labelFont);
   textSize(12);

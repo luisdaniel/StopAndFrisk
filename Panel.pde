@@ -69,24 +69,58 @@ class Panel {
 
 
   void loadPanel() {
-    //PANEL 1
-    String fileName = "panel1-"+race+".jpg";
+    int action;
     tint(255, 255/numStops);
+    String fileName;
+
+
+    //PANEL 1
+    fileName = "panel1-"+race+".jpg";
     p1 = loadImage(fileName);
     image(p1, 0, 0);
+
     //PANELL 2
     fileName = "panel2-"+race+"-"+uniform+".jpg";
     p2 = loadImage(fileName);
     image(p2, width/3, 0);
+
     //PANEL 3
     fileName = "panel3-"+race+"-"+uniform+".jpg";
     p3 = loadImage(fileName);
-    image(p3, width/3, 0);
+    image(p3, 2*width/3, 0);
+
     //PANEL 4
+    fileName = "panel4-"+uniform+".jpg";
+    p4 = loadImage(fileName);
+    image(p4, 0, height/2);
 
     //PANEL 5
+    if (searched == 1) {
+      action = 1;
+    } 
+    else if (frisked == 2) {
+      action = 2;
+    } 
+    else {
+      action = 0;
+    }
+    fileName = "panel5-"+race+"-"+uniform+"-"+action+".jpg";
+    p4 = loadImage(fileName);
+    image(p4, width/3, height/2);
 
     //PANEL 6
+    if (summons == 1) {
+      action = 1;
+    } 
+    else if (arrest == 2) {
+      action = 2;
+    } 
+    else {
+      action = 0;
+    }
+    fileName = "panel6-"+race+"-"+uniform+"-"+action+".jpg";
+    p4 = loadImage(fileName);
+    image(p4, 2*width/3, height/2);
   }
 }
 
