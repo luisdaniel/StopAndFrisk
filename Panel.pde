@@ -47,16 +47,29 @@ class Panel {
     frisked = int(input[12]);
     summons = int(input[23]);
     arrest = int(input[21]);
-    for (int j = 38; j < 48; j++) {
-      if (int(input[j]) == 1) {
-        reasonForStop = input[j];
-      }
-    }
-    for (int j = 48; j < 57; j++) {
-      if (int(input[j]) == 1) {
-        reasonForFrisk = input[j];
-      }
-    }
+    if (int(input[38]) == 1) { reasonForStop = "I'm stopping you because you seem to be carrying a suspicious object."; }
+    else if (int(input[39]) == 1) { reasonForStop = "I'm stopping you because you fit a relevant description."; }
+    else if (int(input[40]) == 1) { reasonForStop = "I'm stopping you because you seem to be casing a victim or location."; }
+    else if (int(input[41]) == 1) { reasonForStop = "I'm stopping you because you appear to be acting as a lookout."; }
+    else if (int(input[42]) == 1) { reasonForStop = "I'm stopping you because you are wearing clothes commonly used in a crime."; }
+    else if (int(input[43]) == 1) { reasonForStop = "I'm stopping you because of your actions indicative of a drug transaction."; }
+    else if (int(input[44]) == 1) { reasonForStop = "I'm stopping you because of your furtive movements."; }
+    else if (int(input[45]) == 1) { reasonForStop = "I'm stopping you because you appear to have been engaging in a violent crime."; }
+    else if (int(input[46]) == 1) { reasonForStop = "I'm stopping you because I see you have a suspicious bulge."; }
+    else if (int(input[47]) == 1) { reasonForStop = "I'm stopping you because of other reasons."; }
+    else { reasonForStop = "I'm stopping you because Reason Not Entered."; }
+    
+    if (int(input[48]) == 1) { reasonForFrisk = "I need to frisk you because I suspect you have committed a violent crime."; }
+    else if(int(input[49]) == 1) { reasonForFrisk = "I need to frisk you because I suspect you are carrying weapons."; }
+    else if(int(input[50]) == 1) { reasonForFrisk = "I need to frisk you because you are wearing inappropriate attire for the season."; }
+    else if(int(input[51]) == 1) { reasonForFrisk = "I need to frisk you because you appear to have been engaging in a violent crime."; }
+    else if(int(input[52]) == 1) { reasonForFrisk = "I need to frisk you because you have refused to comply with my directions."; }
+    else if(int(input[53]) == 1) { reasonForFrisk = "I need to frisk you because you have verbally threatened me."; }
+    else if(int(input[54]) == 1) { reasonForFrisk = "I need to frisk you because of my knowledge of your prior criminal behavior."; }
+    else if(int(input[55]) == 1) { reasonForFrisk = "I need to frisk you because of your furtive movements."; }
+    else if(int(input[56]) == 1) { reasonForFrisk = "I need to frisk you because you have a suspicious bulge."; }
+    else { reasonForFrisk = "I need to frisk you because Reason Not Entered."; }
+    
     for (int j = 57; j < 61; j++) {
       if (int(input[j]) == 1) {
         reasonForSearch = input[j];
@@ -108,21 +121,31 @@ class Panel {
     fileName = "panel4-"+uniform+".jpg";
     p4 = loadImage(fileName);
     image(p4, 0, height/2);
+    textLeading(18);
+    text(reasonForStop, 181, height/2+27, 190, 100);
 
     //PANEL 5
+    String panel5Dialog;
     if (searched == 1) {
       action = 1;
+      panel5Dialog = reasonForSearch;
     } 
     else if (frisked == 2) {
       action = 2;
+      panel5Dialog = reasonForFrisk;
     } 
     else {
       action = 0;
+      panel5Dialog = "I'm not going to search or frisk you.";
     }
     fileName = "panel5-"+race+"-"+uniform+"-"+action+".jpg";
-    p4 = loadImage(fileName);
-    image(p4, width/3, height/2);
-
+    p5 = loadImage(fileName);
+    image(p5, width/3, height/2);
+    textLeading(18);
+    text(panel5Dialog, width/3+36, height/2+23, 182, 100);
+    
+    
+    
     //PANEL 6
     if (summons == 1) {
       action = 1;
