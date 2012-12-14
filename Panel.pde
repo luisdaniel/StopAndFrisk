@@ -70,14 +70,26 @@ class Panel {
 
   void loadPanel() {
     int action;
-    tint(255, 255/numStops);
+    //tint(255, 50);
     String fileName;
 
-
+    
     //PANEL 1
     fileName = "panel1-"+race+".jpg";
     p1 = loadImage(fileName);
     image(p1, 0, 0);
+    //Street Sign
+    fill(128, 128, 128, 50);
+    noStroke();
+    rect(66, 37, textWidth(streetName1), 27);
+    fill(255);
+    textAlign(LEFT);
+    text(streetName1, 66+2, 41+27/2);
+    pushMatrix();
+    translate(00, 40);
+      rotate(0.2);
+      text(streetName2, 52.5 - textWidth(streetName2), 0);
+    popMatrix(); 
 
     //PANELL 2
     fileName = "panel2-"+race+"-"+uniform+".jpg";
@@ -88,6 +100,9 @@ class Panel {
     fileName = "panel3-"+race+"-"+uniform+".jpg";
     p3 = loadImage(fileName);
     image(p3, 2*width/3, 0);
+    textFont(dialogFont, 18);
+    fill(0);
+    text("Hold it right there!", 2*width/3+138, 58);
 
     //PANEL 4
     fileName = "panel4-"+uniform+".jpg";
