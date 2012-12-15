@@ -81,9 +81,9 @@ void drawPermanentFeatures() {
 void loadImages(int suspect) {
   background(255);
   PanelBin bin = binList.get(suspect);
-  //for ( Panel p: bin.panelList) {
-    //p.loadPanel();
-  //}
+//  for ( Panel p: bin.panelList) {
+//    p.loadPanel();
+//  }
   bin.panelList.get(1).loadPanel();
   drawPermanentFeatures();
 }

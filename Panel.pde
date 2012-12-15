@@ -70,11 +70,12 @@ class Panel {
     else if(int(input[56]) == 1) { reasonForFrisk = "I need to frisk you because you have a suspicious bulge."; }
     else { reasonForFrisk = "I need to frisk you because Reason Not Entered."; }
     
-    for (int j = 57; j < 61; j++) {
-      if (int(input[j]) == 1) {
-        reasonForSearch = input[j];
-      }
-    }
+    if (int(input[57]) == 1) { reasonForSearch = "I need to search you because you have a suspicious hard object."; }
+    else if(int(input[58]) == 1) { reasonForSearch = "I need to search you because I see the outline of a weapon."; }
+    else if(int(input[59]) == 1) { reasonForSearch = "I need to search you since you have admitted to my suspicions."; }
+    else if(int(input[60]) == 1) { reasonForSearch = "I need to search you because of other reasons."; }
+    else { reasonForSearch = "I need to search you because Reason Not Entered."; }
+    
     summonsOffense = input[24];
     arrestOffense = input[22];
     suspect = input[93];
@@ -97,6 +98,7 @@ class Panel {
     rect(66, 37, textWidth(streetName1), 27);
     fill(255);
     textAlign(LEFT);
+    textFont(labelFont, 12);
     text(streetName1, 66+2, 41+27/2);
     pushMatrix();
     translate(00, 40);
@@ -108,6 +110,9 @@ class Panel {
     fileName = "panel2-"+race+"-"+uniform+".jpg";
     p2 = loadImage(fileName);
     image(p2, width/3, 0);
+    fill(0);
+    textFont(dialogFont, 18);
+    text("Oh no! A cop.", width/3 + 100, 33, 182, 100); 
 
     //PANEL 3
     fileName = "panel3-"+race+"-"+uniform+".jpg";
@@ -122,7 +127,7 @@ class Panel {
     p4 = loadImage(fileName);
     image(p4, 0, height/2);
     textLeading(18);
-    text(reasonForStop, 181, height/2+27, 190, 100);
+    text(reasonForStop, 190, height/2+27, 190, 100);
 
     //PANEL 5
     String panel5Dialog;
@@ -147,18 +152,24 @@ class Panel {
     
     
     //PANEL 6
+    String panel6Dialog;
     if (summons == 1) {
       action = 1;
+      panel6Dialog = summonsOffense;
     } 
-    else if (arrest == 2) {
+    else if (arrest == 1) {
       action = 2;
+      panel6Dialog = arrestOffense;
     } 
     else {
       action = 0;
+      panel6Dialog = "You are free to go about your business.";
     }
     fileName = "panel6-"+race+"-"+uniform+"-"+action+".jpg";
     p4 = loadImage(fileName);
     image(p4, 2*width/3, height/2);
+    fill(0);
+    text(panel6Dialog, 2*width/3 + 50, height/2 + 40, 182, 100);
   }
 }
 
