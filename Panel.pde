@@ -18,6 +18,8 @@ class Panel {
   String suspect;
   PVector position = new PVector();
   PVector targetPosition = new PVector();
+  int suspectNum;
+  int stopNum;
 
   PImage p1 = new PImage();
   PImage p2, p3, p4, p5, p6;
@@ -170,6 +172,13 @@ class Panel {
     image(p4, 2*width/3, height/2);
     fill(0);
     text(panel6Dialog, 2*width/3 + 50, height/2 + 40, 182, 100);
+    
+    
+    //Label
+    textFont(labelFont, 8);
+    text(suspectNum + "/" + stopNum, width - 40, height - 20 );
+    
+    
   }
 }
 

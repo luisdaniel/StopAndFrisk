@@ -1,4 +1,5 @@
 import java.util.Collections;
+import processing.pdf.*;
 
 ArrayList<Panel> panelList = new ArrayList();
 ArrayList<PanelBin> binList = new ArrayList();
@@ -13,6 +14,7 @@ PFont dialogFont;
 
 void setup() {
   size(1200, 754);
+  beginRecord(PDF, "stopAndrisk-####.pdf");
   //smooth(4);
   labelFont = createFont("Helvetica", 24);
   dialogFont = loadFont("ComicSansMS-14.vlw");
@@ -60,6 +62,8 @@ void sortBySuspect() {
     for (int j = 0 ; j < bin.panelList.size(); j++) {
       Panel p = bin.panelList.get(j);
       p.numStops = bin.panelList.size();
+      p.stopNum = j;
+      p.suspectNum = i;
     }
   }
 }
@@ -81,10 +85,10 @@ void drawPermanentFeatures() {
 void loadImages(int suspect) {
   background(255);
   PanelBin bin = binList.get(suspect);
-//  for ( Panel p: bin.panelList) {
-//    p.loadPanel();
-//  }
-  bin.panelList.get(1).loadPanel();
+  //  for ( Panel p: bin.panelList) {
+  //    p.loadPanel();
+  //  }
+  bin.panelList.get(3).loadPanel();
   drawPermanentFeatures();
 }
 
